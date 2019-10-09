@@ -92,7 +92,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="post_image" class="col-md-4 col-form-label text-md-right">Upload Image</label>
+                                    <label for="post_image" class="col-md-4 col-form-label text-md-right">Share Image</label>
                                         <div class="col-md-6">
                                             <input id="post_image" type="file" class="form-control" name="post_image">
                                             @if (auth()->user()->image)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Traits\UploadTrait;
 use App\Profile;
 use App\User;
 use Auth;
@@ -27,6 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = User::all();  //retrieves all posts from database onto the web page
+        return view('home', ['posts' => $posts]);
     }
 }

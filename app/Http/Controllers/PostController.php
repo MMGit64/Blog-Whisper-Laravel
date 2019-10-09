@@ -16,7 +16,7 @@ class PostController extends Controller
     }
 
     public function post(){
-        $categories = Category::all();
+        $categories = Category::all();  //retrieves all categories from database onto the web page
         return view('posts.posts', ['categories' => $categories]);
     }
 
@@ -29,10 +29,10 @@ class PostController extends Controller
         ]);
 
                 //get current post
+                
                 $posts = User::findOrFail(auth()->user()->id);
                 //set post
                 $posts->post_title = $request->input('post_title');
-                $posts->designation = $request->input('designation');
                 $posts->post_body = $request->input('post_body');
                 $posts->category_id = $request->input('category_id');
                 if($request->has('post_image')){
@@ -53,7 +53,7 @@ class PostController extends Controller
                     $this->uploadOne($image, $folder, 'public', $name);
         
                     //Set posts profile image path in databse to filePath
-                    $posts->post_title = $filePath;
+                    $posts->post_image = $filePath;
                 }
             
                 //Save posts record to database

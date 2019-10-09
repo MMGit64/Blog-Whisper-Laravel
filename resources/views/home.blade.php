@@ -43,9 +43,23 @@
                     You are logged in!
                 </div>
                 <div class="card-body">
-                    <img src="{{ asset(auth()->user()->image) }}" style="width: 200px; height: 200px; border-radius: 50%;">
+                    <img src="{{ asset(auth()->user()->image) }}" style="width: 220px; height: 250px; border-radius: 50%;">
                     <h3>{{ Auth::user()->name }}</h3>
                     <h4>{{ Auth::user()->designation }}<h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Posts</div>
+                <div class="card-body">
+                    @if(count($posts) > 0)
+                        @foreach($posts->all() as $post)
+                            <h4>{{$post->post_title}}</h4>
+                            <img src="{{ asset($post->post_image) }}" style="width: 400px; height: 600px;" alt="">
+                            <p>{{$post->post_body}}</p>
+                        @endforeach
+                    @else
+                        <p>No Post Available</p>
+                    @endif
                 </div>
             </div>
         </div>
